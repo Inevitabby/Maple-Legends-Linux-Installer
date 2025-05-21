@@ -5,6 +5,7 @@ source .util/funcs.sh
 export WINEARCH="win32"
 export WINEPREFIX=$(realpath ".wine")
 readonly PKG=$(find_pkg_file)
+readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
 
 source .util/setup_checks.sh
 
@@ -25,7 +26,7 @@ add_dll_override "ws2_32"
 
 step "5. Setting Virtual Desktop [5/7]"
 reg_add "HKCU\\Software\\Wine\\Explorer" "Desktop" "Default"
-set_resolution 1 # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
+set_resolution "${RES}"
 
 step "6. Setting Windows Version [6/7]"
 winetricks -q win98
