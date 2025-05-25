@@ -17,14 +17,14 @@ step "2. Create 32-bit Wine prefix [2/7]"
 wineboot --init
 wineserver -w
 
-step "3. Install VCRuntime, DXVK, VKD3D, and Corefonts [3/7]"
-winetricks -q vcrun6sp6 dxvk vkd3d corefonts
+step "3. Install Corefonts [3/7]"
+winetricks -q corefonts # vcrun6sp6 dxvk vkd3d
 
 step "4. Installing networking DLLs [4/7]"
 add_dll_override "ws2help"
 add_dll_override "ws2_32"
 
-step "5. Setting Virtual Desktop [5/7]"
+step "5. Setting Virtual Desktop and WINE_DPI_SCALE [5/7]"
 reg_add "HKCU\\Software\\Wine\\Explorer" "Desktop" "Default"
 set_resolution "${RES}"
 

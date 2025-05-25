@@ -3,3 +3,5 @@ MapleLegends-*.pkg
 # Ignore networking DLLs
 ws2_32.dll
 ws2help.dll
+# Ignore custom DPI export
+.dpi.sh

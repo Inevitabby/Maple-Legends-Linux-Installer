@@ -8,6 +8,7 @@
 - Wine with 32-bit support
 - Winetricks
 - bsdtar
+- xrandr (optional, for calculating optimal scale)
 
 **User Responsibilities**:
 - Place the latest Mac Wineskin `.pkg` for Maple Legends in the root directory of this project _(see [Instructions](#instructions))_.
@@ -55,18 +56,21 @@ Edit this line near the top of `setup.sh`:
 ```bash
 readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
 ```
-- Then run `./setup.sh` again to generate a **fresh** prefix with right Virtual Desktop and Legends.ini configuration.
+- Then run `./setup.sh` again to generate a fresh prefix with the right Virtual Desktop, Legends.ini, and WINE_DPI_SCALE configuration.
 
 **Rezizing the Fixed Window:**
 
-If your game window is fixed and unresizable, AMD users can try `gamescope`. Other people, see what your WM and DE can do (e.g., KDE has a Zoom desktop effect (just disable mouse tracking)).
+If your game window is tiny and unresizable, install `xrandr` and run `setup.sh`. Run `play.sh`, click on the maximize button on the game's window decoration, and it should now resize to fill your display and maintain aspect ratio. 
+- If this doesn't work, try `gamescope`.
 
-Also, you may tweak the Wine DPI scale and see if that helps. Edit `play.sh` and look for:
+# Notes to Developers
 
-```bash
-export WINE_DPI_SCALE=96 # scale_factor = WINE_DPI_SCALE / 96
-```
-- *Examples: `96` = 100%; `120` = 125%; `144` = 150%; `192` = 200%*
+Observations made while developing this script that may be of use:
+
+1. Windows 98 has an effect on stability, at least on KDE + X11.
+  - When using Windows 7, crashes at startup or while moving the window were very common, while on Windows 98 zero crashes were observed (after adding the win32* DLL overrides)
+2. Winetricks isn't required to create a Wineprefix capable of launching the game, at least on Wine 10 Staging.
+  - This script only uses Winetricks to install corefonts, and Windows 98 can be set with `winecfg -v`; so it's not strictly needed, but broken fonts can be subtley annoying, so even though it's like half the install time, it's probably worth it.
 
 # Special Thanks
 
