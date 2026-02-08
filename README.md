@@ -7,7 +7,7 @@
 
 **Software**:
 - bsdtar
-- xrandr (optional, for calculating DPI)
+- xrandr *(optional, but **highly recommended** for setting best-fit resolution and DPI)*
 
 **User Responsibilities**:
 - Place the latest Mac Wineskin `.pkg` for Maple Legends in the root directory of this project _(see [Instructions](#instructions))_.
