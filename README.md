@@ -1,14 +1,13 @@
 <div align="center">
 	<h1>Maple Legends Linux Installer</h1>
+	<p>Last Tested Version: <pre>MapleLegends-MAC11JAN2026</pre></p>
 </div>
 
 # Requirements
 
 **Software**:
-- Wine with 32-bit support
-- Winetricks
 - bsdtar
-- xrandr (optional, for calculating optimal scale)
+- xrandr (optional, for calculating DPI)
 
 **User Responsibilities**:
 - Place the latest Mac Wineskin `.pkg` for Maple Legends in the root directory of this project _(see [Instructions](#instructions))_.
@@ -52,17 +51,16 @@ readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable
 
 **Rezizing the Fixed Window:**
 
-If your game window is tiny and unresizable, install `xrandr` and run `setup.sh`. Run `play.sh`, click on the maximize button on the game's window decoration, and it should now resize to fill your display and maintain aspect ratio. 
+If your game window is tiny and unresizable, install `xrandr` and rerun `setup.sh`.
+
+Start the game with `play.sh` and **click on the maximize button** on the game's window decoration (Alt+Enter is buggy!). The game should resize to fill your display and maintain aspect ratio. 
 - If this doesn't work, try `gamescope`.
 
 # Notes to Developers
 
 Observations made while developing this script that may be of use:
 
-1. Windows 98 has an effect on stability, at least on KDE + X11.
-  - When using Windows 7, crashes at startup or while moving the window were very common, while on Windows 98 zero crashes were observed (after adding the win32* DLL overrides)
-2. Winetricks isn't required to create a Wineprefix capable of launching the game, at least on Wine 10 Staging.
-  - This script only uses Winetricks to install corefonts, and Windows 98 can be set with `winecfg -v`; so it's not strictly needed, but broken fonts can be subtley annoying, so even though it's like half the install time, it's probably worth it.
+1. When using Windows 7, crashes at startup or while moving the window were very common; while on Windows 98 zero crashes were observed (after adding the win32* DLL overrides)
 
 # Special Thanks
 
