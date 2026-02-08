@@ -1,8 +1,6 @@
 #!/bin/env bash
 cd "$(dirname "$0")" || exit
-
-export WINEPREFIX="$(realpath .wine)"
-export WINEARCH="win32"
+source .util/ensure_wine.sh
 
 if [[ ! -d "${WINEPREFIX}" ]]; then
 	echo "Please run setup.sh first (WINEPREFIX not found)"
@@ -10,4 +8,5 @@ if [[ ! -d "${WINEPREFIX}" ]]; then
 fi
 
 source .dpi.sh
+
 wine start /unix "${WINEPREFIX}/drive_c/MapleLegends/MapleLegends.exe"

@@ -13,8 +13,8 @@ fi
 echo
 # Ask if the user wants to do a reinstall
 if [ -d "MapleLegends" ]; then
-	read -p $'\033[31mPrevious install found, do you want to reinstall everything? (this will delete ".wine" and "MapleStory") [y/n] \033[0m' -n 1 -r
+	read -p $'\033[31mPrevious install found, do you want to reinstall everything? (this will delete ".wine", ".wine-bin", and "MapleStory") [y/n] \033[0m' -n 1 -r
 	echo
 	[[ ! $REPLY =~ ^[Yy]$ ]] && exit 1
-	rm -rf ".wine" "MapleLegends"
+	rm -rf ".wine" "MapleLegends" ".wine-bin"
 fi

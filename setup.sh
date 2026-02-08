@@ -2,12 +2,11 @@
 cd "$(dirname "$0")" || exit
 source .util/funcs.sh
 
-export WINEARCH="win32"
-export WINEPREFIX=$(realpath ".wine")
 readonly PKG=$(find_pkg_file)
 readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
 
 source .util/setup_checks.sh
+source .util/ensure_wine.sh
 
 step "1. Extract game files from ${PKG} [1/7]"
 bsdtar -xO --fast-read --file "$PKG" "MapleLegends.pkg/Payload" | \

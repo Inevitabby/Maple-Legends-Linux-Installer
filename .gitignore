@@ -8,4 +8,5 @@ ws2help.dll
 .dpi.sh
 # Game Files
 .wine/
+.wine-bin/
 MapleLegends/
