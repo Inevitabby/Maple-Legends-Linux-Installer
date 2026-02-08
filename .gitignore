@@ -1,8 +1,6 @@
 # Ignore MapleLegends package files
 MapleLegends-*.pkg
 MapleLegends*.cxarchive
-# Ignore custom DPI export
-.dpi.sh
 # Game Files
 .wine/
 .wine-bin/

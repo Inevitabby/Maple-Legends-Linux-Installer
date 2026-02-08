@@ -72,7 +72,14 @@ The setup script will calculate your DPI automatically, making the game look bet
 
 If `xrandr` isn't available, you can manually set DPI by editting the registry or using Winetricks.
 
-Remember that the `WINEPREFIX` is `$(basename .wine)` (has to be absolute path)
+You can source the same file the script uses to setup Wine to quickly set `$PATH` (to use the portable WINE), `$WINEARCH` (to use win32), and `$WINEPREFIX` (to use the game's WINE prefix)
+
+```bash
+# PLEASE make sure you are in the project root before running this!
+source .util/setup_wine.sh
+# Sets DPI to 144
+wine reg add "HKCU\Control Panel\Desktop" /v LogPixels /t REG_DWORD /d 144 /f
+```
 
 ## Fullscreening
 

@@ -15,6 +15,9 @@ find_pkg() {
 reg_add() {
 	wine reg add "$1" /v "$2" /t REG_SZ /d "$3" /f
 }
+reg_add_dword() {
+	wine reg add "$1" /v "$2" /t REG_DWORD /d "$3" /f
+}
 add_dll_override() {
 	cp -f "./.dlls/${1}.dll" ".wine/drive_c/windows/system32/"
 	reg_add "HKCU\\Software\\Wine\\DllOverrides" "\"*$1\"" "native, builtin"
@@ -67,6 +70,6 @@ set_virtual_desktop_resolution() {
 	local dpi=$(xrandr --listmonitors 2>/dev/null | grep "\*" | # I   Get primary monitor
 		sed 's/\// /g; s/x/ /g' |                           # II  Get resolution
 		awk '{print int($3 * 25.4 / $4)}')                  # III DPI = pixels * 25.4 / millimeters
-	echo "export WINE_PREFIX_DPI=${dpi:-96}" > .dpi.sh
-	step "DPI: ${dpi}"
+	step "DPI: $dpi"
+	reg_add_dword "HKCU\Control Panel\Desktop" "LogPixels" "$dpi"
 }

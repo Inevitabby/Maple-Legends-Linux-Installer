@@ -7,6 +7,5 @@ if [[ ! -d ".wine" || ! -d "MapleLegends" ]]; then
 fi
 
 source .util/setup_wine.sh
-source .dpi.sh
 
 wine start /unix "${WINEPREFIX}/drive_c/MapleLegends/MapleLegends.exe"
