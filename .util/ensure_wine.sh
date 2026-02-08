@@ -9,7 +9,7 @@ if [[ ! -f "$WINE_DIR/bin/wine" ]]; then
     curl -L "$WINE_URL" | tar -xJ -C "$WINE_DIR" --strip-components=1
 fi
 
-# Export environment  variables
+# Export environment variables
 export PATH="$WINE_DIR/bin:$PATH"
 export WINEARCH="win32"
 export WINEPREFIX="$(realpath .wine)"
