@@ -1,9 +1,6 @@
 # Ignore MapleLegends package files
 MapleLegends-*.pkg
 MapleLegends*.cxarchive
-# Ignore networking DLLs
-ws2_32.dll
-ws2help.dll
 # Ignore custom DPI export
 .dpi.sh
 # Game Files

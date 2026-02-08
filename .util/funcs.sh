@@ -16,7 +16,7 @@ reg_add() {
 	wine reg add "$1" /v "$2" /t REG_SZ /d "$3" /f
 }
 add_dll_override() {
-	cp -f "${1}.dll" ".wine/drive_c/windows/system32/"
+	cp -f "./.dlls/${1}.dll" ".wine/drive_c/windows/system32/"
 	reg_add "HKCU\\Software\\Wine\\DllOverrides" "\"*$1\"" "native, builtin"
 }
 
