@@ -40,7 +40,7 @@ Download the Mac **Wineskin** `.pkg` for Maple Legends (**not Crossover**) from 
 
 # Tips / Problem Solving
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > **tl;dr**: If you have a graphical quirk, install `xrandr` and re-run `setup.sh`!
 > 
 > If that doesn't doesn't fix your issue, then consult these tips.
@@ -53,10 +53,12 @@ Download the Mac **Wineskin** `.pkg` for Maple Legends (**not Crossover**) from 
 readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
 ```
 
-2. Then run `./setup.sh` again to generate a prefix with the right Virtual Desktop, Legends.ini, and WINE_DPI_SCALE configuration.
+2. Then run `./setup.sh` again to generate a prefix with the right settings.
 
-> ![IMPORTANT]
-> `RES="2"` is very likely to make your game simply not start.
+> [!CAUTION]
+> `RES="2"` is very likely to make your game simply crash on start.
+> 
+> You should try it and see if it works, but it probably won't.
 
 ## Increasing DPI
 
@@ -68,7 +70,9 @@ The setup script will calculate your DPI automatically, making the game look bet
 
 **2. Manual**
 
-If `xrandr` isn't available, you can manually set DPI with the environment variable `WINE_PREFIX_DPI`.
+If `xrandr` isn't available, you can manually set DPI by editting the registry or using Winetricks.
+
+Remember that the `WINEPREFIX` is `$(basename .wine)` (has to be absolute path)
 
 ## Fullscreening
 
@@ -82,7 +86,7 @@ Fullscreening the game is a bit finicky.
 
 [^fn1]: When I say **full screen**, I don't mean "maximized but with 5% of the top pulled down so I can see my hipster polybar", I mean **full screen**—like it goes across your full display!
 
-> ![NOTE]
+> [!NOTE]
 > Alt+Enter is buggy and doesn't work for fullscreening the game, you *have* to click on the window decoration, which may be uncomposited (so you may have to click with an invisible mouse).
 
 ## Fixing Window Overflow
@@ -103,7 +107,7 @@ The virtual desktop's default resolution is best-fit for your display resolution
 
 As you aren't using your entire display resolution, you'll have to increase the `OFFSET` until the game fits inside whatever smaller box it is that you are trying to put it in.
 
-> ![NOTE]
+> [!NOTE]
 > On tiling window managers, the size of the virtual desktop can be extremely non-obvious because of how your WM force-resizes windows beyond their limits.
 > 
 > This plays badly with a fixed-resolution game and can manifest in the form of uncomposited portions of the window. I recommend docking your game and having a consistent setup for it.
