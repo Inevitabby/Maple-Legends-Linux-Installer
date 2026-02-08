@@ -6,7 +6,7 @@ step() {
 
 # Pkg
 
-find_pkg_file() {
+find_pkg() {
 	find . -maxdepth 1 -type f -name "MapleLegends-*.pkg" | head -n 1 | xargs basename
 }
 
