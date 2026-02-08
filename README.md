@@ -76,6 +76,8 @@ The setup script will calculate your DPI automatically and it should look a lot 
 # Developer Notes
 
 1. When using Windows 7, game crashed frequently at startup or while moving the window. It's much stabler on Windows 98.
+2. The actual game files are identical between Crossover .cxarchive and Wineskin .pkg. 
+	- Crossover just has more junk inside of it and some symbolic links that make simultaneous selective extraction and flattening a PITA; hence why I only support the smaller and easier .pkg files.
 
 # Special Thanks
 
