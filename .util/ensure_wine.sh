@@ -6,7 +6,7 @@ WINE_DIR="$(pwd)/.wine-bin"
 WINE_TAR="$(pwd)/$(basename "$WINE_URL")"
 
 if [[ ! -f "$WINE_DIR/bin/wine" ]]; then
-    echo "Preparing wine..."
+    step "Preparing wine..."
     mkdir -p "$WINE_DIR"
     # Special: Download wine if missing
     [[ ! -f "$WINE_TAR" ]] && curl -L "$WINE_URL" -o "$WINE_TAR"
