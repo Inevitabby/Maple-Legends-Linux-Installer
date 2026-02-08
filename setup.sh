@@ -22,7 +22,7 @@ add_dll_override "ws2_32"
 
 step "4. Setting Virtual Desktop and WINE_DPI_SCALE... [4/6]"
 reg_add "HKCU\\Software\\Wine\\Explorer" "Desktop" "Default"
-set_resolution "${RES}"
+set_virtual_desktop_resolution "${RES}"
 
 step "5. Setting Windows Version... [5/6]"
 reg_add "HKCU\\Software\\Wine" "Version" "win98"
