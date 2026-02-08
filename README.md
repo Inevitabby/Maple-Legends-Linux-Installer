@@ -38,46 +38,82 @@ Download the Mac **Wineskin** `.pkg` for Maple Legends (**not Crossover**) from 
 ./play.sh
 ```
 
-# Tips
+# Tips / Problem Solving
+
+> ![IMPORTANT]
+> **tl;dr**: If you have a graphical quirk, install `xrandr` and re-run `setup.sh`!
+> 
+> If that doesn't doesn't fix your issue, then consult these tips.
 
 ## Changing Game Client Resolution
 
-Edit this line near the top of `setup.sh`:
+1. Edit this line near the top of `setup.sh`:
 
 ```bash
 readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
 ```
-- Then run `./setup.sh` again to generate a fresh prefix with the right Virtual Desktop, Legends.ini, and WINE_DPI_SCALE configuration.
+
+2. Then run `./setup.sh` again to generate a prefix with the right Virtual Desktop, Legends.ini, and WINE_DPI_SCALE configuration.
 
 > ![IMPORTANT]
 > `RES="2"` is very likely to make your game simply not start.
+
+## Increasing DPI
+
+**1. Automatic**
+
+If your game looks low-resolution, install `xrandr` and rerun `setup.sh`.
+
+The setup script will calculate your DPI automatically, making the game look better.
+
+**2. Manual**
+
+If `xrandr` isn't available, you can manually set DPI with the environment variable `WINE_PREFIX_DPI`.
 
 ## Fullscreening
 
 Fullscreening the game is a bit finicky.
 
 1. Start the game with `play.sh`
-2. Maximize the virtual desktop window
+2. Make the virtual desktop window **full screen**[^fn1]
 3. Maximize the game by clicking maximize button on the game's **window decoration** (top-right) 
 4. The game should resize to fill your maximized virtual desktop
 	- If this didn't work, try `gamescope`.
 
+[^fn1]: When I say **full screen**, I don't mean "maximized but with 5% of the top pulled down so I can see my hipster polybar", I mean **full screen**—like it goes across your full display!
+
 > ![NOTE]
-> Alt+Enter is buggy and doesn't work for fullscreening the game, you *have* to click on the window decoration, which may be uncomposited (so you may have to click blindly).
+> Alt+Enter is buggy and doesn't work for fullscreening the game, you *have* to click on the window decoration, which may be uncomposited (so you may have to click with an invisible mouse).
 
-## Increasing DPI
+## Fixing Window Overflow
 
-If your game looks low-resolution when maximized, install `xrandr` and rerun `setup.sh`.
+If you don't want to fullscreen the virtual desktop but still want to maximize the game, you may find that the game overflows past the bottom of the virtual desktop.
 
-The setup script will calculate your DPI automatically and it should look a lot better.
+To fix this, you'll need to add a **manual offset** that shaves off the pixels from the virtual desktop that you aren't using.
 
-> Alternatively, you can manually set DPI with the environment variable `WINE_PREFIX_DPI`
+Edit this line near the top of `setup.sh`:
+
+```bash
+readonly OFFSET=0
+```
+
+This offset is the number of pixels subtracted from the virtual desktop's resolution (from each dimension).
+
+The virtual desktop's default resolution is best-fit for your display resolution and aspect ratio-preserving for your game (very important, because otherwise you'd get a stretched game).
+
+As you aren't using your entire display resolution, you'll have to increase the `OFFSET` until the game fits inside whatever smaller box it is that you are trying to put it in.
+
+> ![NOTE]
+> On tiling window managers, the size of the virtual desktop can be extremely non-obvious because of how your WM force-resizes windows beyond their limits.
+> 
+> This plays badly with a fixed-resolution game and can manifest in the form of uncomposited portions of the window. I recommend docking your game and having a consistent setup for it.
 
 # Developer Notes
 
 1. When using Windows 7, game crashed frequently at startup or while moving the window. It's much stabler on Windows 98.
 2. The actual game files are identical between Crossover .cxarchive and Wineskin .pkg. 
-	- Crossover just has more junk inside of it and some symbolic links that make simultaneous selective extraction and flattening a PITA; hence why I only support the smaller and easier .pkg files.
+	- Crossover just has more junk inside of it and some symbolic links that make simultaneous selective extraction and flattening a PITA; hence why I only support the smaller and way easier .pkg files.
+3. If you set Virtual Desktop resolution to your display resolution, if your display isn't the same aspect ratio as the game you will get wonky scaling not only in the game, but the inputs (the stretched axis will move faster); if you don't like how a virtual desktop looks, you *really* won't like an unplayable stretched game.
 
 # Special Thanks
 
