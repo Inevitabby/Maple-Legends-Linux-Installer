@@ -7,3 +7,5 @@ MapleLegends*.cxarchive
 .wine/
 .wine-bin/
 MapleLegends/
+# Wine
+*.tar.xz
