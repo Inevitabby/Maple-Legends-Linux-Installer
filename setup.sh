@@ -3,7 +3,7 @@ cd "$(dirname "$0")" || exit
 source .util/funcs.sh
 
 readonly PKG=$(find_pkg_file)
-readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable)
+readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (unstable!!!)
 
 source .util/setup_checks.sh
 source .util/ensure_wine.sh

@@ -38,9 +38,9 @@ Download the Mac **Wineskin** `.pkg` for Maple Legends (**not Crossover**) from 
 ./play.sh
 ```
 
-# Helpful Tidbits
+# Tips
 
-**Changing Game Client Resolution:**
+## Changing Game Client Resolution
 
 Edit this line near the top of `setup.sh`:
 
@@ -49,18 +49,33 @@ readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (potentially unstable
 ```
 - Then run `./setup.sh` again to generate a fresh prefix with the right Virtual Desktop, Legends.ini, and WINE_DPI_SCALE configuration.
 
-**Rezizing the Fixed Window:**
+> ![IMPORTANT]
+> `RES="2"` is very likely to make your game simply not start.
 
-If your game window is tiny and unresizable, install `xrandr` and rerun `setup.sh`.
+## Fullscreening
 
-Start the game with `play.sh` and **click on the maximize button** on the game's window decoration (Alt+Enter is buggy!). The game should resize to fill your display and maintain aspect ratio. 
-- If this doesn't work, try `gamescope`.
+Fullscreening the game is a bit finicky.
 
-# Notes to Developers
+1. Start the game with `play.sh`
+2. Maximize the virtual desktop window
+3. Maximize the game by clicking maximize button on the game's **window decoration** (top-right) 
+4. The game should resize to fill your maximized virtual desktop
+	- If this didn't work, try `gamescope`.
 
-Observations made while developing this script that may be of use:
+> ![NOTE]
+> Alt+Enter is buggy and doesn't work for fullscreening the game, you *have* to click on the window decoration, which may be uncomposited (so you may have to click blindly).
 
-1. When using Windows 7, crashes at startup or while moving the window were very common; while on Windows 98 zero crashes were observed (after adding the win32* DLL overrides)
+## Increasing DPI
+
+If your game looks low-resolution when maximized, install `xrandr` and rerun `setup.sh`.
+
+The setup script will calculate your DPI automatically and it should look a lot better.
+
+> Alternatively, you can manually set DPI with the environment variable `WINE_PREFIX_DPI`
+
+# Developer Notes
+
+1. When using Windows 7, game crashed frequently at startup or while moving the window. It's much stabler on Windows 98.
 
 # Special Thanks
 

@@ -67,7 +67,7 @@ set_resolution() {
 		read -r scale_factor virt_w virt_h dpi <<< "$(calculate_fitted_resolution "${game_w}" "${game_h}" "${disp_w}" "${disp_h}")"
 		apply_wine_dpi "$dpi"
 	else
-		echo "(xrandr not found, using original resolution)"
+		echo "(xrandr not found, falling back to defaults)"
 	fi
 	reg_add "HKCU\\Software\\Wine\\Explorer\\Desktops" "Default" "${virt_w}x${virt_h}"
 	ini_set "HDClient" "$1"
