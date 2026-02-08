@@ -6,7 +6,7 @@ readonly PKG=$(find_pkg)
 readonly RES="1" # 0 = 800x600, 1 = 1024x768, 2 = 1366x768 (unstable!!!)
 
 source .util/setup_checks.sh
-source .util/ensure_wine.sh
+source .util/setup_wine.sh
 
 step "1. Extracting game files from ${PKG} (this may take a while)... [1/6]"
 bsdtar -xO --fast-read --file "$PKG" "MapleLegends.pkg/Payload" | \
